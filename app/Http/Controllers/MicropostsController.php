@@ -13,7 +13,7 @@ class MicropostsController extends Controller
             // 認証済みユーザを取得
             $user = \Auth::user();
             // ユーザの投稿の一覧を作成日時の降順で取得
-            $microposts = $user->feed_microposts()->orderBy('created_at', 'desc')->paginate(10);
+            $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
@@ -55,22 +55,6 @@ class MicropostsController extends Controller
         return back();
     }
     
-    public function show($id)
-    {
-        // idの値でユーザを検索して取得
-        $user = User::findOrFail($id);
-
-        // 関係するモデルの件数をロード
-        $user->loadRelationshipCounts();
-
-        // ユーザの投稿一覧を作成日時の降順で取得
-        $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
-
-        // ユーザ詳細ビューでそれらを表示
-        return view('users.show', [
-            'user' => $user,
-            'microposts' => $microposts,
-        ]);
-    }
+    
     
 }

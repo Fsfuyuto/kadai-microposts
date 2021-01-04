@@ -27,5 +27,5 @@
         @endforeach
     </ul>
     {{-- ページネーションのリンク --}}
-    {{ $microposts->links() }}
+    {{ $microposts ->links() }}
 @endif
