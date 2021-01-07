@@ -8,7 +8,7 @@ class UserFavoritesController extends Controller
 {
     public function store($micropost)
     {
-        // 認証済みユーザ（閲覧者）が、 idのユーザをフォローする
+        // 認証済みユーザ（閲覧者）が、 idのユーザをfavoriteする
         \Auth::user()->favorite($micropost);
         // 前のURLへリダイレクトさせる
         return back();
@@ -22,7 +22,7 @@ class UserFavoritesController extends Controller
      */
     public function destroy($micropost)
     {
-        // 認証済みユーザ（閲覧者）が、 idのユーザをアンフォローする
+        // 認証済みユーザ（閲覧者）が、 idのユーザをunfavoriteする
         \Auth::user()->unfavorite($micropost);
         // 前のURLへリダイレクトさせる
         return back();
